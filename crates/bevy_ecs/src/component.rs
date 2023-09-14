@@ -676,6 +676,12 @@ impl Tick {
         self.tick = tick;
     }
 
+    /// Returns the [`Tick`] immediately following `self`.
+    #[inline]
+    pub fn next(self) -> Tick {
+        Self::new(self.tick.wrapping_add(1))
+    }
+
     /// Returns `true` if this `Tick` occurred since the system's `last_run`.
     ///
     /// `this_run` is the current tick of the system, used as a reference to help deal with wraparound.
